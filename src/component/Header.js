@@ -2,13 +2,25 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => {
+  const navs = [
+    {
+      label: 'About',
+      path: '/about'
+    },
+    {
+      label: 'Contact',
+      path: '/contact'
+    }
+  ];
   return (
-    <div className='flex justify-between px-8 bg-orange-900 text-white py-2 items-center'>
+    <div className='flex justify-between px-10 bg-black text-white py-4 items-center sticky top-0 z-50'>
 
-      <NavLink to='/' replace className='text-xl'>Logo</NavLink>
+      <NavLink to='/' replace className='text-2xl'>Sample Logo</NavLink>
       <div className='space-x-5'>
-        <NavLink to='/about'>About</NavLink>
-        <NavLink to='/contact'>Contact</NavLink>
+
+        {navs.map((n, i) => {
+          return <NavLink className='hover:bg-white hover:p-2 hover:text-black ' to={n.path} key={i} >{n.label}</NavLink>
+        })}
       </div>
     </div>
   )

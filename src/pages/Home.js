@@ -36,12 +36,15 @@
 // export default Home
 
 import React from 'react'
+import Display from './MainPage/Display'
+import Tech from './MainPage/Tech'
 
 const Home = () => {
   return (
     <div>
-      <h1>This is Home Page</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem earum, dicta quaerat aliquid ea accusamus, at placeat voluptas debitis nam recusandae numquam ullam molestiae non nisi eum, temporibus ad deserunt nulla sapiente similique possimus quis modi cupiditate. Magni autem error iste atque quo. Maxime minima quia sequi similique odit, illo modi repellat deleniti officiis porro provident sed rerum saepe. Rem placeat amet eligendi in inventore soluta corporis iure unde obcaecati dolorum, necessitatibus doloremque reiciendis et tenetur eos officiis quo pariatur!</p>
+
+      <Display />
+      <Tech />
     </div>
   )
 }
