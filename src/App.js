@@ -598,35 +598,128 @@
 // export default App
 
 
+// //date and time
+// import React, { useState } from 'react'
+// import { Route, Routes } from 'react-router'
+// import Home from './pages/Home'
 
-import React, { useState } from 'react'
-import { Route, Routes } from 'react-router'
-import Home from './pages/Home'
+
+// const App = () => {
+
+//   const [date, setDate] = useState(new Date());
+
+
+//   setInterval(() => {
+//     setDate(new Date());
+//   }, 1);
+//   return (
+//     <>
+//       <h1>{date.getHours()} :{date.getMinutes()} :{date.getSeconds()}
+//       </h1>
+
+
+//       <Routes>
+//         <Route path='/' element={<Home />} />
+
+//       </Routes>
+//     </>
+//   )
+// }
+
+// export default App
+
+
+
+// //import React, { useEffect, useState } from 'react'
+
+// const App = () => {
+
+//   const [val, setVal] = useState(null);
+
+//   const a = setTimeout(() => {
+//     setVal({
+//       title: 'avatar'
+//     });
+//   }, 5000);
+
+//   useEffect(() => {
+//     console.log('run me')
+//     if (val !== null) {
+//       clearTimeout(a);
+//     }
+
+//   }, [val]);
+
+//   return (
+
+
+//     <div>
+//       {/* {val && <h1>{val.title}</h1>} */}
+//       <h1> {val?.title}</h1>
+//     </div>
+//   )
+// }
+
+// export default App
+
+// //asynchronous
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 
 const App = () => {
 
-  const [date, setDate] = useState(new Date());
+  const [data, setData] = useState([]);
+  const [err, setErr] = useState(null);
+  const [isLoad, setLoad] = useState(false);
+  const getData = async () => {
+
+    try {
+      setLoad(true);
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+      setLoad(false);
+      setData(response.data);
+    } catch (err) {
+      setLoad(false);
+      setErr(err.message)
+    }
+
+  }
 
 
-  setInterval(() => {
-    setDate(new Date());
-  }, 1);
+  useEffect(() => {
+    getData();
+  }, []);
+  console.log(isLoad);
+
+  if (isLoad) {
+    return <h1>Loading....</h1>
+  }
+
+  if (err) {
+    return <h1>{err}</h1>
+  }
+  console.log(data);
+
   return (
-    <>
-      <h1>{date.getHours()} :{date.getMinutes()} :{date.getSeconds()}
-      </h1>
+    <div>
+      {data && data.map((d) => {
+        return <div key={d.id} className='shadow-2xl my-5'>
+          <h1>{d.email}</h1>
+          <h1>{d.name}</h1>
+          <p>{d.phone}</p>
+          <p>{d.address.city}</p>
+        </div>
 
+      })}
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-
-      </Routes>
-    </>
+    </div>
   )
 }
 
 export default App
+
+
 
 
 
