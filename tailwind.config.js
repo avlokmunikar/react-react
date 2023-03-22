@@ -1,11 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+
+module.exports = withMT({
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
-
+      gridTemplateColumns: {
+        'grid4': 'repeat(auto-fit, minmax(300px, 1fr))'
+      }
     },
     screens: {
       '2xl': { 'max': '1536px' },
@@ -14,6 +19,8 @@ module.exports = {
       'md': { 'max': '768px' },
       'sm': { 'max': '640px' },
     },
+
+
   },
   plugins: [],
-}
+});
