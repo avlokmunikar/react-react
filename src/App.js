@@ -705,7 +705,7 @@
 //     <div>
 //       {data && data.map((d) => {
 //         return <div key={d.id} className='shadow-2xl my-5'>
-//           <h1>{d.email}</h1>
+//           <h1>{d.title}</h1>
 //           <h1>{d.name}</h1>
 //           <p>{d.phone}</p>
 //           <p>{d.address.city}</p>
@@ -721,16 +721,41 @@
 
 
 import React from 'react'
-import Crud from './component/Crud'
+import { Route, Routes } from 'react-router'
+import Add from './component/Add'
+import Header from './component/Header'
+import Update from './component/Update'
+import Detail from './pages/Detail'
+import Home from './pages/Home'
+
+
+
 
 const App = () => {
+
+
   return (
     <div>
-      <Crud />
+      <Header />
+
+      <Routes>
+
+        <Route path='/' element={<Home />} />
+        <Route path='contact' element={<Add />} />
+        <Route path='update' element={<Update />} />
+        <Route path='detail/:id' element={<Detail />} />
+
+      </Routes>
+
 
     </div>
   )
 }
+
+
+
+
+
 
 export default App
 

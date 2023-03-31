@@ -2,16 +2,14 @@
 
 
 
-export const isVal = (formik) => {
+// export const isVal = (formik) => {
 
 
-  if (formik.errors.email && formik.touched.email) {
-    return true;
-  } else {
-    return false;
-  }
+//   if (formik.errors.email && formik.touched.email) {
+//     return true;
+//   } else {
+//     return false;
+//   }
 
 
-}
-
-
+// }
